@@ -1,0 +1,53 @@
+Arguments: 
+  /usr/local/bin/node /mnt/c/Users/aspirin/AppData/Roaming/npm/node_modules/yarn/bin/yarn.js
+
+PATH: 
+  /home/aspirin/.vscode-server/bin/6261075646f055b99068d3688932416f2346dd3b/bin/remote-cli:/home/aspirin/.local/share/solana/install/active_release/bin:/home/aspirin/.local/bin:/home/aspirin/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/ProgramData/DockerDesktop/version-bin:/mnt/c/Program Files/nodejs/:/mnt/c/Program Files/Geth:/mnt/c/Users/aspirin/.cargo/bin:/mnt/c/Users/aspirin/AppData/Local/Programs/Python/Python39-32/Scripts/:/mnt/c/Users/aspirin/AppData/Local/Programs/Python/Python39-32/:/mnt/c/Users/aspirin/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/aspirin/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/aspirin/AppData/Local/Programs/Git/cmd:/mnt/c/users/aspirin/appdata/roaming/python/python39/scripts:/mnt/c/users/aspirin/.local/bin:/mnt/c/msys64/mingw64/bin:/mnt/c/Users/aspirin/AppData/Local/Programs/Git LFS:/mnt/c/Users/aspirin/AppData/Local/Programs/Git LFS:/mnt/c/ProgramData/aspirin/GitHubDesktop/bin:/mnt/c/Users/aspirin/AppData/Roaming/npm:/snap/bin:/home/aspirin/.foundry/bin:/home/aspirin/.foundry/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  16.16.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: ENOENT: no such file or directory, open '/home/aspirin/.cache/yarn/v6/npm-@next-swc-linux-x64-gnu-13.0.5-d886be84865c4b3d720add8b0c1f7e71221972c2-integrity/node_modules/@next/swc-linux-x64-gnu/.yarn-metadata.json'
+
+npm manifest: 
+  {
+    "name": "solana-intro-frontend",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+    },
+    "dependencies": {
+      "@solana/wallet-adapter-base": "^0.9.5",
+      "@solana/wallet-adapter-react": "^0.15.4",
+      "@solana/wallet-adapter-react-ui": "^0.9.6",
+      "@solana/wallet-adapter-wallets": "^0.15.5",
+      "@solana/web3.js": "^1.37.0",
+      "next": "13.0.5",
+      "react": "18.2.0",
+      "react-dom": "18.2.0"
+    },
+    "devDependencies": {
+      "@types/node": "^17.0.23",
+      "@types/react": "^17.0.43",
+      "eslint": "8.12.0",
+      "eslint-config-next": "12.1.2",
+      "typescript": "^4.6.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

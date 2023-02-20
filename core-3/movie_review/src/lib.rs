@@ -1,7 +1,16 @@
 use solana_program::{
-    account_info::AccountInfo, entrypoint, entrypoint::ProgramResult, msg, pubkey::Pubkey,
+    account_info::{next_account_info, AccountInfo},
+    borsh::try_from_slice_unchecked,
+    entrypoint,
+    entrypoint::ProgramResult,
+    msg,
+    program::invoke_signed,
+    pubkey::Pubkey,
+    system_instruction,
+    sysvar::{rent::Rent, Sysvar},
 };
 pub mod instruction;
+pub mod state;
 use instruction::MovieInstruction;
 
 entrypoint!(process_instruction);
@@ -26,18 +35,13 @@ pub fn process_instruction(
     accounts: &[AccountInfo],
     instruction_data: &[u8],
 ) -> ProgramResult {
-    let instruction = MovieInstruction::unpack(instruction_data);
+    let instruction = MovieInstruction::unpack(instruction_data)?;
 
     match instruction {
-        Ok(MovieInstruction::AddMovieReview {
+        MovieInstruction::AddMovieReview {
             title,
             rating,
             description,
-        }) => {
-            add_movie_review(program_id, accounts, title, rating, description);
-        }
-        _ => {}
+        } => add_movie_review(program_id, accounts, title, rating, description),
     }
-
-    Ok(())
 }

@@ -36,7 +36,7 @@ const movieInstructionLayout = borsh.struct([
 
 async function sendTestMovieReview(signer: web3.Keypair, programId: web3.PublicKey, connection: web3.Connection) {
   let buffer = Buffer.alloc(1000)
-  const movieTitle = `Braveheart${Math.random() * 1000000}`
+  const movieTitle = `Braveheart ${Math.random() * 1000000}`
   movieInstructionLayout.encode(
     {
       variant: 0,

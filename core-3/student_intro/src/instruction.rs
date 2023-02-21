@@ -2,7 +2,7 @@ use borsh::BorshDeserialize;
 use solana_program::program_error::ProgramError;
 
 pub enum StudentIntroInstruction {
-    AddStudent { name: String, intro: String },
+    AddStudentIntro { name: String, msg: String },
 }
 
 impl StudentIntroInstruction {
@@ -13,9 +13,9 @@ impl StudentIntroInstruction {
         let payload = StudentIntroPayload::try_from_slice(rest).unwrap();
 
         Ok(match variant {
-            0 => Self::AddStudent {
+            0 => Self::AddStudentIntro {
                 name: payload.name,
-                intro: payload.intro,
+                msg: payload.msg,
             },
             _ => return Err(ProgramError::InvalidInstructionData),
         })
@@ -25,5 +25,6 @@ impl StudentIntroInstruction {
 #[derive(BorshDeserialize)]
 struct StudentIntroPayload {
     name: String,
-    intro: String,
+    msg: String,
 }
+

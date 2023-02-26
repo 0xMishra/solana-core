@@ -3,6 +3,7 @@ use solana_program::program_error::ProgramError;
 
 pub enum StudentIntroInstruction {
     AddStudentIntro { name: String, msg: String },
+    UpdateStudentIntro { name: String, msg: String },
 }
 
 impl StudentIntroInstruction {
@@ -17,6 +18,10 @@ impl StudentIntroInstruction {
                 name: payload.name,
                 msg: payload.msg,
             },
+            1 => Self::UpdateStudentIntro {
+                name: payload.name,
+                msg: payload.msg,
+            },
             _ => return Err(ProgramError::InvalidInstructionData),
         })
     }
@@ -27,4 +32,3 @@ struct StudentIntroPayload {
     name: String,
     msg: String,
 }
-

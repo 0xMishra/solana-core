@@ -91,7 +91,7 @@ async function main() {
   const connection = new web3.Connection(web3.clusterApiUrl('devnet'))
   await airdropSolIfNeeded(signer, connection)
 
-  const movieProgramId = new web3.PublicKey('DZixAUY3e3zpWjyJbhAqWPsZcNjjbRUjwB8Esv9t5yme')
+  const movieProgramId = new web3.PublicKey('vb5arihGUyWLRxZ7eoBCgL718y9BTFSFtt47xLDSwDG')
   await sendTestMovieReview(signer, movieProgramId, connection)
 }
 

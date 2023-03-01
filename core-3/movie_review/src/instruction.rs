@@ -12,6 +12,9 @@ pub enum MovieInstruction {
         rating: u8,
         description: String,
     },
+    AddComment {
+        comment: String,
+    },
 }
 
 impl MovieInstruction {
@@ -19,20 +22,31 @@ impl MovieInstruction {
         let (&variant, rest) = input
             .split_first()
             .ok_or(ProgramError::InvalidInstructionData)?;
-
-        let payload = MovieReviewPayload::try_from_slice(rest).unwrap();
-
         Ok(match variant {
-            0 => Self::AddMovieReview {
-                title: payload.title,
-                rating: payload.rating,
-                description: payload.description,
-            },
-            1 => Self::UpdateMovieReview {
-                title: payload.title,
-                rating: payload.rating,
-                description: payload.description,
-            },
+            0 => {
+                // Payload moved into the match statement for each payload
+                let payload = MovieReviewPayload::try_from_slice(rest).unwrap();
+                Self::AddMovieReview {
+                    title: payload.title,
+                    rating: payload.rating,
+                    description: payload.description,
+                }
+            }
+            1 => {
+                let payload = MovieReviewPayload::try_from_slice(rest).unwrap();
+                Self::UpdateMovieReview {
+                    title: payload.title,
+                    rating: payload.rating,
+                    description: payload.description,
+                }
+            }
+            2 => {
+                // Comment payload uses its own deserializer cause of the different data type
+                let payload = CommentPayload::try_from_slice(rest).unwrap();
+                Self::AddComment {
+                    comment: payload.comment,
+                }
+            }
             _ => return Err(ProgramError::InvalidInstructionData),
         })
     }
@@ -43,4 +57,9 @@ struct MovieReviewPayload {
     title: String,
     rating: u8,
     description: String,
+}
+
+#[derive(BorshDeserialize)]
+struct CommentPayload {
+    comment: String,
 }
